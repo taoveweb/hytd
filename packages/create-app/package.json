@@ -1,0 +1,35 @@
+{
+  "name": "@hytd/create-app",
+  "version": "1.0.1",
+  "license": "MIT",
+  "author": "Matt Huang",
+  "bin": {
+    "create-app": "index.js",
+    "cva": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-*"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . --lerna-package create-app",
+    "release": "node updateVersions && node ../../scripts/release.js --skipBuild"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hytd/hytd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hytd/hytd/issues"
+  },
+  "homepage": "https://github.com/hytd/hytd/tree/main/packages/create-app#readme",
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "kolorist": "^1.2.9",
+    "minimist": "^1.2.5"
+  }
+}

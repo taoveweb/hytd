@@ -31,7 +31,8 @@ cli
   .option('-l, --logLevel <level>', `[string] silent | error | warn | all`)
   .option('--clearScreen', `[boolean] allow/disable clear screen when logging`)
   .option('-d, --debug [feat]', `[string | boolean] show debug logs`)
-  .option('-f, --filter <filter>', `[string] filter debug logs`);
+  .option('-f, --filter <filter>', `[string] filter debug logs`)
+  .option('-g, --git <filter>', `[string] filter debug logs`);
 
 // dev
 cli
