@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
+const shell = require('shelljs');
 const { prompt } = require('enquirer');
 const {
   yellow,
@@ -122,9 +123,27 @@ async function init() {
   if (root !== cwd) {
     console.log(`  cd ${path.relative(cwd, root)}`);
   }
+
   console.log(`  ${pkgManager === 'yarn' ? `yarn` : `npm install`}`);
   console.log(`  ${pkgManager === 'yarn' ? `yarn dev` : `npm run dev`}`);
-  console.log();
+  console.log(`${path.relative(cwd, root)}`, '${path.relative(cwd, root)}');
+  try {
+    await shell.exec(
+      `cd ${path.relative(cwd, root)}&& pwd && yarn && yarn dev`
+    );
+  } catch (error) {
+    console.log(error);
+    // {
+    //     message: 'Command failed: /bin/sh -c exit 3'
+    //     killed: false,
+    //     code: 3,
+    //     signal: null,
+    //     cmd: '/bin/sh -c exit 3',
+    //     stdout: '',
+    //     stderr: '',
+    //     timedOut: false
+    // }
+  }
 }
 
 function copy(src, dest) {
